@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: vinod-project
+  namespace: argocd
+spec:
+  sourceRepos:
+    - https://github.com/vinodkumarvaishncr/app-ui.git  # ✅ Add your repo here
+
+  destinations:
+    - namespace: vinod-agrocd                       # ✅ Add your namespace
+      server: https://kubernetes.default.svc        # ✅ Add your cluster (default ArgoCD K8s cluster)
+
+  # Optional: allow all cluster resources
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
