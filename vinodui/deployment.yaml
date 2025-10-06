@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vinod-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  strategy:
+      type: RollingUpdate
+  template:
+    metadata:
+      name: nginx-Pod-deployment
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - name: nginxdev
+        image: sonambewafaa/useless:yellow
+        ports:
+          - containerPort: 80
